@@ -17,9 +17,11 @@ This unified platform consolidates the [Alberta MCP](https://github.com/JCrossma
 - ✅ Key Vault with managed secrets
 - ✅ Storage Accounts with containers
 - ✅ Log Analytics & Application Insights
+- ✅ Microsoft Fabric F2 capacity (Canada Central) - Currently PAUSED
 
 ### Next Steps
-- [ ] Deploy Microsoft Fabric capacity (see [MANUAL_SETUP_STEPS.md](MANUAL_SETUP_STEPS.md))
+- [x] Deploy Microsoft Fabric capacity ✅
+- [ ] Create Fabric workspaces (resume capacity first)
 - [ ] Configure Microsoft Purview scanning
 - [ ] Set up Copilot Studio agents
 - [ ] Begin data migration from Alberta MCP
@@ -129,6 +131,15 @@ alberta-platform/
 │   │   │   ├── api.bicep           # Azure Functions
 │   │   │   ├── web.bicep           # Static Web App
 │   │   │   └── keyvault-secrets.bicep # Helper module
+│   │   ├── fabric/                 # Fabric deployment ✅
+│   │   │   ├── fabric-capacity.json          # ARM template
+│   │   │   ├── fabric-capacity.parameters.json
+│   │   │   ├── deploy-fabric.sh    # Deployment script
+│   │   │   ├── pause-fabric.sh     # Pause (stop billing)
+│   │   │   ├── resume-fabric.sh    # Resume (start billing)
+│   │   │   ├── status-fabric.sh    # Check status
+│   │   │   ├── fabric-aliases.sh   # Shell shortcuts
+│   │   │   └── README.md           # Management guide
 │   │   ├── parameters/             # Environment configs
 │   │   │   └── dev.parameters.json
 │   │   └── scripts/                # Deployment automation
@@ -187,15 +198,18 @@ alberta-platform/
 git clone https://github.com/JCrossman/alberta-platform.git
 cd alberta-platform
 
-# Deploy infrastructure (requires Azure CLI)
-cd infrastructure/bicep
-./scripts/deploy.sh dev
+# If resuming work (Fabric is paused)
+cd infrastructure/bicep/fabric
+./resume-fabric.sh  # Takes ~30 seconds, starts billing
 
-# Follow manual setup for Fabric/Purview/Copilot
-# See MANUAL_SETUP_STEPS.md
+# Check status
+./status-fabric.sh
+
+# When done for the day
+./pause-fabric.sh   # Stops billing immediately
 ```
 
-See [GETTING_STARTED.md](GETTING_STARTED.md) for detailed onboarding and [docs/implementation-plan.md](docs/implementation-plan.md) for development roadmap.
+For first-time deployment, see [DEPLOYMENT.md](DEPLOYMENT.md). For manual setup steps (Purview/Copilot), see [MANUAL_SETUP_STEPS.md](MANUAL_SETUP_STEPS.md).
 
 ## Key Features
 

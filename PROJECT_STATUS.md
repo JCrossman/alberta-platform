@@ -47,7 +47,18 @@
 - Web App: https://wonderful-glacier-06429630f.2.azurestaticapps.net
 - Key Vault: https://kv-alberta-platform-dev.vault.azure.net/
 
-### 3. Comprehensive Documentation ✅
+### 3. Microsoft Fabric Capacity ✅
+- **Deployed**: Fabric F2 capacity "fabricalbertadev" in Canada Central
+- **Cost Management**: Pause/resume scripts created and tested
+- **Status**: Currently PAUSED (not billing)
+- **Scripts Working**:
+  - ✅ `pause-fabric.sh` - Successfully tested, capacity paused
+  - ✅ `resume-fabric.sh` - Ready for use
+  - ✅ `status-fabric.sh` - Shows current state
+  - ✅ `fabric-aliases.sh` - Shell shortcuts for convenience
+- **Cost Savings**: Can reduce $988/month to ~$290/month with daily pause/resume
+
+### 4. Comprehensive Documentation ✅
 **Created/Updated Files**:
 - ✅ `README.md` - Project overview with deployment status
 - ✅ `GETTING_STARTED.md` - Onboarding guide (updated)
@@ -57,6 +68,7 @@
 - ✅ `docs/implementation-plan.md` - Phase 0 marked complete
 - ✅ `docs/MIGRATION_PLAN.md` - 26-week migration strategy
 - ✅ `infrastructure/BICEP_TEMPLATES.md` - IaC documentation
+- ✅ `infrastructure/bicep/fabric/README.md` - Complete Fabric management guide
 - ✅ `.gitignore` - Azure, secrets, build artifacts
 
 **Existing Documentation**:
@@ -68,21 +80,23 @@
 - ✅ Technical Requirements
 - ✅ Demo Delivery Guide
 
-### 4. GitHub Repository ✅
+### 5. GitHub Repository ✅
 - **URL**: https://github.com/JCrossman/alberta-platform
 - **Visibility**: Public
-- **Files**: 31 files committed
-- **Initial Commit**: Complete with descriptive message
-- **Remote**: Configured and pushed successfully
+- **Files**: 44 files committed (including Fabric scripts)
+- **Commits**: 4 commits including Fabric deployment and pause/resume
+- **Remote**: Up to date and synced
 
 ---
 
 ## 📊 Key Metrics
 
 ### Cost
-- **Current**: ~$245/month (without Fabric)
-- **With Fabric F2**: ~$645/month
-- **With Fabric F64**: ~$8,916/month
+- **Core Infrastructure**: ~$245/month
+- **Fabric F2 (24/7)**: $988/month
+- **Fabric F2 (work hours with pause)**: ~$290/month (70% savings)
+- **Current State**: Fabric PAUSED - not billing
+- **With Fabric F64**: ~$8,916/month (for production demos)
 
 ### Regional Placement
 - **Canada Central**: Data storage, AI Search (compliance)
@@ -100,52 +114,64 @@
 
 ## 📋 Next Steps
 
-### Immediate (This Week)
-1. **Grant Function App Key Vault Access** (manual)
+### Immediate (Tomorrow - Resume Work)
+1. **Resume Fabric Capacity**
    ```bash
-   az role assignment create \
-     --assignee <function-principal-id> \
-     --role "Key Vault Secrets User" \
-     --scope <keyvault-id>
+   cd ~/Desktop/FoundryPurview/infrastructure/bicep/fabric
+   ./resume-fabric.sh
    ```
+   Takes ~30 seconds, starts billing at $1.35/hour
 
-2. **Configure GitHub Repository**
+2. **Create Fabric Workspaces**
+   - Navigate to: https://app.fabric.microsoft.com
+   - Create workspaces (see MANUAL_SETUP_STEPS.md):
+     - alberta-healthcare
+     - alberta-justice
+     - alberta-energy
+     - alberta-agriculture
+     - alberta-pensions
+     - alberta-coordination (for MCP migration)
+
+3. **Configure GitHub Repository Topics**
    - Add topics: `azure`, `bicep`, `microsoft-fabric`, `purview`, `ai-foundry`, `copilot-studio`
    - Update repository description
-   - Add social preview image (optional)
-
-3. **Deploy Microsoft Fabric**
-   - Portal: https://portal.azure.com
-   - Resource Group: `rg-alberta-platform-data-dev`
-   - SKU: F2 (dev) or F64 (production demos)
-   - See: `MANUAL_SETUP_STEPS.md`
 
 ### Short-Term (Next 2 Weeks)
-4. **Set Up Microsoft Purview**
-   - Create Purview account manually
-   - Configure scanning for Fabric workspaces
-   - Set up data lineage
+4. **Configure OneLake Structure**
+   - Set up bronze/silver/gold data zones
+   - Create Lakehouses in each workspace
+   - Document data flow patterns
 
-5. **Configure Copilot Studio**
+5. **Set Up Microsoft Purview Scanning**
+   - Register Fabric workspaces as data sources
+   - Configure automated daily scans
+   - Set up business glossary
+
+6. **Begin Data Ingestion**
+   - Alberta Open Data (healthcare, courts, energy)
+   - Create first data pipelines
+   - Test data quality checks
+
+7. **Configure Copilot Studio**
    - Power Platform environment
    - Connect to Azure OpenAI endpoint
    - Build initial chatbot topics
 
-6. **Begin Data Migration**
-   - Migrate CosmosDB data from Alberta MCP
-   - Set up data pipelines in Fabric
-   - Test data quality checks
-
 ### Medium-Term (Next Month)
-7. **Build First Use Case**
+8. **Begin Alberta MCP Data Migration**
+   - Clone alberta-mcp repository
+   - Extract CosmosDB data
+   - Migrate to Fabric OneLake
+
+9. **Build First Use Case**
    - Healthcare Intelligence (wait time analysis)
    - Power BI dashboard
-   - AI predictions
+   - AI predictions via Azure OpenAI
 
-8. **Practice Demos**
-   - Technical audience: Show Azure services
-   - Executive audience: Show business value
-   - Record practice sessions
+10. **Practice Demos**
+    - Technical audience: Show Azure services integration
+    - Executive audience: Show business value
+    - Record practice sessions
 
 ### Long-Term (Next 3 Months)
 9. **Complete Migration Plan**
@@ -163,13 +189,16 @@
 ## 🔧 Troubleshooting
 
 ### Common Issues
-**"Function App can't access Key Vault"**
-- Manually grant "Key Vault Secrets User" role (see Next Steps #1)
+**"Fabric capacity not available"**
+- Check if paused: `./status-fabric.sh`
+- Resume if needed: `./resume-fabric.sh`
+- Takes ~30 seconds to become active
 
 **"Fabric is expensive"**
-- Use F2 SKU for dev (~$400/month)
-- Enable auto-pause (saves 60%)
-- Delete capacity when not in use
+- Use F2 SKU for dev ($988/month)
+- **Manually pause daily** (saves 70%: ~$290/month for work hours)
+- Set calendar reminders: 6pm pause, 9am resume
+- See: `infrastructure/bicep/fabric/README.md`
 
 **"Some services in US regions"**
 - GPT-4o not available in Canada Central
@@ -307,15 +336,24 @@ alberta-platform/
 ## 🚀 You're Ready!
 
 Everything is set up and ready to go:
-- ✅ Azure infrastructure deployed
-- ✅ Documentation complete
-- ✅ GitHub repository created
-- ✅ Deployment automation working
+- ✅ Azure infrastructure deployed (all core services)
+- ✅ Microsoft Fabric F2 capacity deployed
+- ✅ Fabric pause/resume cost management working
+- ✅ Function App Key Vault access configured
+- ✅ Documentation complete and up to date
+- ✅ GitHub repository synced
+- ✅ Deployment automation tested and working
 
-**Next**: Follow the "Next Steps" section above to continue building!
+**Current State**: 
+- 🟢 Infrastructure: All running
+- ⏸️ Fabric: PAUSED (not billing) - resume when needed
+- 📚 Documentation: Complete
+- 🔄 Git: All changes committed and pushed
+
+**Tomorrow**: Resume Fabric and create workspaces!
 
 ---
 
-**Generated**: January 20, 2026  
-**Version**: 1.0.0  
-**Status**: Infrastructure Deployment Complete ✅
+**Generated**: January 20, 2026 (Updated: 2:19 AM UTC)  
+**Version**: 1.0.1  
+**Status**: Infrastructure Complete + Fabric Deployed ✅

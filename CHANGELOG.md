@@ -5,6 +5,38 @@ All notable changes to the Alberta Open Data Intelligence Platform will be docum
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-01-20 (Evening)
+
+### Added - Fabric Cost Management
+- Created `pause-fabric.sh` - Pauses Fabric capacity to stop billing
+- Created `resume-fabric.sh` - Resumes Fabric capacity (starts billing)
+- Created `status-fabric.sh` - Shows current capacity state and billing status
+- Created `fabric-aliases.sh` - Optional shell shortcuts (work-start, work-end)
+- Created `infrastructure/bicep/fabric/README.md` - Complete Fabric management guide
+
+### Deployed - Microsoft Fabric
+- Microsoft Fabric F2 capacity "fabricalbertadev" deployed to Canada Central
+- Successfully tested pause functionality (capacity currently paused)
+- Verified status checking and state transitions
+- Cost management solution: Manual pause/resume can save 70% ($988→$290/month)
+
+### Changed
+- Updated `PROJECT_STATUS.md` - Added Fabric deployment status and pause/resume workflow
+- Updated `MANUAL_SETUP_STEPS.md` - Added deployed status and daily cost management instructions
+- Updated cost estimates to reflect actual Fabric F2 pricing ($988/month 24/7)
+
+### Testing
+- ✅ Pause script: Successfully paused capacity
+- ✅ Status script: Shows "Paused" state with billing stopped
+- ✅ State transitions: Active → Pausing → Paused (~30 seconds)
+- ⏳ Resume script: Ready to test (not tested yet to avoid charges overnight)
+
+### Documentation
+- Comprehensive cost management guide in Fabric README
+- Daily workflow examples (work-start, work-end)
+- Cost tracking recommendations
+- Portal verification instructions
+
 ## [1.0.0] - 2026-01-20
 
 ### Added - Infrastructure as Code

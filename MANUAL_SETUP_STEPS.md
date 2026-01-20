@@ -10,7 +10,9 @@ The Azure CLI has limitations with Microsoft Fabric and Copilot Studio. These se
 
 ### Status: ✅ DEPLOYED (January 20, 2026)
 
-**Capacity deployed**: fabricalbertadev in Canada Central (F2)
+**Capacity deployed**: fabricalbertadev in Canada Central (F2)  
+**Current state**: ⏸️ PAUSED (not billing)  
+**Testing**: ✅ Pause/resume scripts tested and working
 
 **⚠️ CRITICAL**: No automatic pause available. Must manually pause/resume to save costs.
 
