@@ -1,0 +1,84 @@
+# Azure
+*.azureauth
+*.publishsettings
+local.settings.json
+.env
+.env.local
+
+# Secrets
+*.key
+*.pem
+secrets/
+.secrets
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains
+.idea/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+.venv
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform.lock.hcl
+
+# Bicep
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Build outputs
+dist/
+build/
+*.dll
+*.exe
+bin/
+obj/
+
+# Data files (large)
+*.csv
+*.parquet
+*.json.gz
+data/sources/*.json
+data/sources/*.csv
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Session state (user-specific)
+.copilot/session-state/
+

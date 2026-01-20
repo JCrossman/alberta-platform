@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environment": {
+      "value": "dev"
+    },
+    "location": {
+      "value": "canadacentral"
+    },
+    "projectName": {
+      "value": "alberta-platform"
+    },
+    "ownerEmail": {
+      "value": "jcrossman@microsoft.com"
+    },
+    "deployOpenAIModels": {
+      "value": true
+    }
+  }
+}
