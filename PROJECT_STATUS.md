@@ -8,6 +8,12 @@
 
 ## ✅ What Was Accomplished
 
+### Current Status Summary (Updated: Jan 28, 2026 3:30 AM UTC)
+- ✅ Fabric Capacity: ACTIVE and running
+- ✅ Fabric Workspaces: 6 created and assigned to capacity
+- ⚠️ Core Azure Services: Deployment pending (resource naming conflicts)
+- 📍 Phase: 0 (Foundation & Setup) - IN PROGRESS
+
 ### 1. Infrastructure as Code (Bicep) ✅
 - **Main Orchestrator**: `infrastructure/bicep/main.bicep`
 - **6 Modular Templates**:
@@ -49,14 +55,33 @@
 
 ### 3. Microsoft Fabric Capacity ✅
 - **Deployed**: Fabric F2 capacity "fabricalbertadev" in Canada Central
+- **Subscription**: ME-MngEnvMCAP516709-jcrossman-1
+- **Capacity ID**: d3573d92-2028-43ca-b175-938851d9f37e
+- **Status**: ACTIVE (billing $1.35/hour) - Updated Jan 28, 2026
 - **Cost Management**: Pause/resume scripts created and tested
-- **Status**: Currently PAUSED (not billing)
 - **Scripts Working**:
   - ✅ `pause-fabric.sh` - Successfully tested, capacity paused
-  - ✅ `resume-fabric.sh` - Ready for use
+  - ✅ `resume-fabric.sh` - Tested and working (resumed Jan 28)
   - ✅ `status-fabric.sh` - Shows current state
   - ✅ `fabric-aliases.sh` - Shell shortcuts for convenience
+  - ✅ `create-workspaces.sh` - Creates workspaces via API (NEW)
 - **Cost Savings**: Can reduce $988/month to ~$290/month with daily pause/resume
+
+### 3a. Microsoft Fabric Workspaces ✅ NEW (Jan 28, 2026)
+- **Created**: 6 workspaces via Fabric REST API
+- **Assigned**: All workspaces assigned to fabricalbertadev capacity
+- **Portal**: https://app.fabric.microsoft.com
+
+| Workspace Name | Workspace ID | Purpose |
+|----------------|--------------|---------|
+| alberta-healthcare | e18c4eb6-b6b2-4778-98cf-d8af3ad13215 | Healthcare data and analytics |
+| alberta-justice | c780cc3b-fe24-4678-a6f2-250afd91de9e | Justice and courts data |
+| alberta-energy | 053e2131-7ddc-4b57-89c2-5b0f2a3ec869 | Energy sector data |
+| alberta-agriculture | 1d746c8d-d173-4680-9ef3-d382a2136b61 | Agriculture and farming data |
+| alberta-pensions | 86dd4de7-85ec-49ab-ad72-ec1bc76ecb55 | Pension and benefits data |
+| alberta-coordination | 1013f015-ee04-473d-a868-4dc682f322fe | MCP migration and coordination |
+
+**Next Step**: Create Lakehouses in each workspace
 
 ### 4. Comprehensive Documentation ✅
 **Created/Updated Files**:
@@ -114,27 +139,33 @@
 
 ## 📋 Next Steps
 
-### Immediate (Tomorrow - Resume Work)
-1. **Resume Fabric Capacity**
-   ```bash
-   cd ~/Desktop/FoundryPurview/infrastructure/bicep/fabric
-   ./resume-fabric.sh
-   ```
-   Takes ~30 seconds, starts billing at $1.35/hour
-
-2. **Create Fabric Workspaces**
-   - Navigate to: https://app.fabric.microsoft.com
-   - Create workspaces (see MANUAL_SETUP_STEPS.md):
-     - alberta-healthcare
-     - alberta-justice
-     - alberta-energy
-     - alberta-agriculture
-     - alberta-pensions
-     - alberta-coordination (for MCP migration)
-
-3. **Configure GitHub Repository Topics**
+### ✅ COMPLETED (Jan 28, 2026)
+1. ~~Resume Fabric Capacity~~ ✅ Done
+2. ~~Create Fabric Workspaces~~ ✅ Done - 6 workspaces created and assigned
+3. **Configure GitHub Repository Topics** - TODO
    - Add topics: `azure`, `bicep`, `microsoft-fabric`, `purview`, `ai-foundry`, `copilot-studio`
    - Update repository description
+
+### Immediate (Next Session)
+1. **Resolve Azure Infrastructure Deployment**
+   - Fix resource naming conflicts (storage account, Key Vault)
+   - Complete deployment of:
+     - Azure OpenAI
+     - AI Search
+     - Azure Functions
+     - Static Web App
+     - Key Vault
+     - Storage Accounts
+   - Run: `cd infrastructure/bicep && ./scripts/deploy.sh dev`
+
+2. **Create Fabric Lakehouses**
+   - Navigate to: https://app.fabric.microsoft.com
+   - In each workspace, create a Lakehouse:
+     - Name: `<workspace-name>-lakehouse` (e.g., alberta-healthcare-lakehouse)
+     - Create folder structure:
+       - bronze/ (raw data)
+       - silver/ (cleansed data)
+       - gold/ (analytics-ready data)
 
 ### Short-Term (Next 2 Weeks)
 4. **Configure OneLake Structure**
@@ -344,16 +375,21 @@ Everything is set up and ready to go:
 - ✅ GitHub repository synced
 - ✅ Deployment automation tested and working
 
-**Current State**: 
-- 🟢 Infrastructure: All running
-- ⏸️ Fabric: PAUSED (not billing) - resume when needed
-- 📚 Documentation: Complete
-- 🔄 Git: All changes committed and pushed
+**Current State** (Updated: Jan 28, 2026 3:30 AM): 
+- ⚠️ Core Azure Services: Pending deployment (naming conflicts)
+- 🟢 Fabric Capacity: ACTIVE and billing ($1.35/hour)
+- ✅ Fabric Workspaces: 6 created and assigned to capacity
+- 📚 Documentation: Up to date
+- 🔄 Git: Changes need to be committed
 
-**Tomorrow**: Resume Fabric and create workspaces!
+**Next Session**: 
+1. Fix and deploy core Azure infrastructure
+2. Create Lakehouses in Fabric workspaces
+3. Commit and push all changes to GitHub
 
 ---
 
-**Generated**: January 20, 2026 (Updated: 2:19 AM UTC)  
-**Version**: 1.0.1  
-**Status**: Infrastructure Complete + Fabric Deployed ✅
+**Generated**: January 20, 2026  
+**Last Updated**: January 28, 2026 3:30 AM UTC  
+**Version**: 1.0.2  
+**Status**: Fabric Deployed + Workspaces Created ✅ | Core Azure Services Pending ⚠️

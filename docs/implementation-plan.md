@@ -37,7 +37,7 @@ This ensures you master the technology first, then add the polish needed for C-s
 
 ## Project Phases
 
-### Phase 0: Foundation & Setup (Week 1-2) ✅ COMPLETED
+### Phase 0: Foundation & Setup (Week 1-2) ✅ IN PROGRESS
 **Objective**: Establish Azure environment and core infrastructure
 
 #### Tasks
@@ -48,8 +48,8 @@ This ensures you master the technology first, then add the polish needed for C-s
    - [x] Set up GitHub for version control
    - [x] Establish cost management and budgeting alerts
 
-2. **Service Provisioning** ✅ PARTIALLY COMPLETED
-   - [x] Deploy core Azure infrastructure via Bicep:
+2. **Service Provisioning** 🔄 IN PROGRESS (Updated: Jan 28, 2026)
+   - [ ] Deploy core Azure infrastructure via Bicep:
      - Azure OpenAI (GPT-4o, text-embedding-3-small) - East US
      - Azure AI Search - Canada Central
      - Azure Functions (Flex Consumption)
@@ -57,7 +57,9 @@ This ensures you master the technology first, then add the polish needed for C-s
      - Key Vault with managed secrets
      - Storage Accounts with containers
      - Log Analytics & Application Insights
-   - [ ] Enable Microsoft Fabric capacity (manual - see MANUAL_SETUP_STEPS.md)
+     - **Status**: Resource groups created, services deployment pending (name conflicts to resolve)
+   - [x] Enable Microsoft Fabric capacity (fabricalbertadev - F2, Canada Central) ✅ COMPLETED Jan 28
+   - [x] Create Fabric workspaces (6 workspaces created and assigned) ✅ COMPLETED Jan 28
    - [ ] Set up Microsoft Purview scanning (manual)
    - [ ] Configure Copilot Studio environment (manual)
    
@@ -68,12 +70,27 @@ This ensures you master the technology first, then add the polish needed for C-s
 - **Deployment Time**: ~15 minutes
 - **Cost**: ~$645/month (without Fabric)
 
-3. **Data Source Identification**
+**Fabric Deployment Details** ✅ COMPLETED:
+- **Capacity**: fabricalbertadev (F2 SKU, Canada Central)
+- **Subscription**: ME-MngEnvMCAP516709-jcrossman-1 (dabe0b83-abdb-448f-9ab0-31dfb2ab6b4b)
+- **Status**: Active (billing $1.35/hour)
+- **Workspaces Created** (Jan 28, 2026):
+  - alberta-healthcare (e18c4eb6-b6b2-4778-98cf-d8af3ad13215)
+  - alberta-justice (c780cc3b-fe24-4678-a6f2-250afd91de9e)
+  - alberta-energy (053e2131-7ddc-4b57-89c2-5b0f2a3ec869)
+  - alberta-agriculture (1d746c8d-d173-4680-9ef3-d382a2136b61)
+  - alberta-pensions (86dd4de7-85ec-49ab-ad72-ec1bc76ecb55)
+  - alberta-coordination (1013f015-ee04-473d-a868-4dc682f322fe)
+- **Management Scripts**: `infrastructure/bicep/fabric/` (pause-fabric.sh, resume-fabric.sh, status-fabric.sh)
+- **Cost Management**: Pause when not in use to save ~70% (~$290/month vs $988/month)
+
+3. **Data Source Identification** 🔜 NEXT
    - [ ] Identify Alberta Open Data sources (healthcare, environment, education)
    - [ ] Document data schemas and APIs
    - [ ] Assess data quality and update frequency
    - [ ] Create data source inventory
    - [ ] Obtain necessary API keys/access credentials
+   - **Target Start**: After core Azure services deployed
 
 4. **Security & Compliance Baseline**
    - [ ] Configure Azure AD/Entra ID security
