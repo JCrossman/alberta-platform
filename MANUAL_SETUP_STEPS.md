@@ -8,10 +8,11 @@ The Azure CLI has limitations with Microsoft Fabric and Copilot Studio. These se
 
 ## 1. Microsoft Fabric Capacity Setup
 
-### Status: ✅ DEPLOYED (January 20, 2026)
+### Status: ✅ COMPLETE (January 28, 2026)
 
 **Capacity deployed**: fabricalbertadev in Canada Central (F2)  
-**Current state**: ⏸️ PAUSED (not billing)  
+**Current state**: 🟢 ACTIVE (billing $1.35/hour)  
+**Workspaces**: ✅ 6 workspaces created and assigned to capacity  
 **Testing**: ✅ Pause/resume scripts tested and working
 
 **⚠️ CRITICAL**: No automatic pause available. Must manually pause/resume to save costs.
@@ -40,19 +41,23 @@ cd ~/Desktop/FoundryPurview/infrastructure/bicep/fabric
 
 See `infrastructure/bicep/fabric/README.md` for complete management guide.
 
-### Next: Create Workspaces
-   
-   Navigate to: https://app.fabric.microsoft.com
-   
-   Create these workspaces:
-   - `alberta-healthcare` (for healthcare data)
-   - `alberta-justice` (for courts/justice data)
-   - `alberta-energy` (for energy data)
-   - `alberta-agriculture` (for agriculture data)
-   - `alberta-pensions` (for pension data)
-   - `alberta-coordination` (for MCP migration data)
+### Workspaces Created ✅ (Jan 28, 2026)
 
-5. **Configure OneLake Structure**
+All workspaces created via API and assigned to capacity:
+
+| Workspace Name | Workspace ID | Purpose |
+|----------------|--------------|---------|
+| alberta-healthcare | e18c4eb6-b6b2-4778-98cf-d8af3ad13215 | Healthcare data and analytics |
+| alberta-justice | c780cc3b-fe24-4678-a6f2-250afd91de9e | Justice and courts data |
+| alberta-energy | 053e2131-7ddc-4b57-89c2-5b0f2a3ec869 | Energy sector data |
+| alberta-agriculture | 1d746c8d-d173-4680-9ef3-d382a2136b61 | Agriculture and farming data |
+| alberta-pensions | 86dd4de7-85ec-49ab-ad72-ec1bc76ecb55 | Pension and benefits data |
+| alberta-coordination | 1013f015-ee04-473d-a868-4dc682f322fe | MCP migration and coordination |
+
+View at: https://app.fabric.microsoft.com
+
+### Next: Create Lakehouses
+### Next: Create Lakehouses
    
    In each workspace, create a Lakehouse with this structure:
    ```
@@ -205,9 +210,11 @@ Once both Fabric and Purview are set up:
 
 After completing manual setup:
 
-- [ ] Fabric capacity is running
-- [ ] 6 Fabric workspaces created
-- [ ] OneLake structure configured
+- [x] Fabric capacity is running ✅
+- [x] 6 Fabric workspaces created ✅
+- [x] Workspaces assigned to capacity ✅
+- [ ] OneLake Lakehouses created (Next step)
+- [ ] OneLake structure configured (bronze/silver/gold)
 - [ ] Purview scanning Fabric workspaces
 - [ ] Business glossary populated
 - [ ] Copilot Studio environment created

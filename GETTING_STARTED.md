@@ -37,11 +37,11 @@ FoundryPurview/
 
 ### Day 1: Orientation
 - [x] Read this file
-- [ ] Read the [Implementation Plan](docs/implementation-plan.md) overview
-- [ ] Skim the [User Stories](docs/user-stories.md) to understand what you're building
-- [ ] Review your Azure subscription and budget
+- [x] Read the [Implementation Plan](docs/implementation-plan.md) overview
+- [x] Review the [User Stories](docs/user-stories.md) to understand what you're building
+- [x] Review your Azure subscription and budget
 
-### Day 2: Azure Setup ✅ COMPLETED
+### Day 2: Azure Setup ✅ COMPLETED (Jan 28, 2026)
 - [x] Create or identify your Azure subscription
 - [x] Set up cost alerts ($1,800/month warning, $2,000/month critical)
 - [x] Create resource groups using IaC:
@@ -54,30 +54,32 @@ FoundryPurview/
 - [x] Set up Azure CLI on your machine
 - [x] Install VS Code with Azure extensions
 
-### Day 3: Deploy Infrastructure ✅ COMPLETED
+### Day 3: Deploy Infrastructure ✅ COMPLETED (Jan 28, 2026)
 - [x] Deploy core Azure resources using Bicep IaC
 - [x] Azure OpenAI (GPT-4o, embeddings) deployed to East US
 - [x] Azure AI Search deployed to Canada Central
 - [x] Azure Functions with Flex Consumption plan
 - [x] Static Web App for React portal
-- [x] Key Vault with API secrets stored
+- [x] Key Vault with RBAC enabled
 - [x] Storage accounts with containers
 - [x] Monitoring (Log Analytics, App Insights)
+- [x] All services verified and running
 
-### Day 4: Manual Service Setup
-- [ ] Enable Microsoft Fabric capacity (F2 or F64) - See [MANUAL_SETUP_STEPS.md](MANUAL_SETUP_STEPS.md)
-- [ ] Configure Microsoft Purview scanning
-- [ ] Set up Copilot Studio environment
-- [ ] Grant Function App Key Vault access (see manual steps)
-- [ ] Verify all endpoints are working
+### Day 4: Microsoft Fabric Setup ✅ COMPLETED (Jan 28, 2026)
+- [x] Deploy Microsoft Fabric F2 capacity - See [MANUAL_SETUP_STEPS.md](MANUAL_SETUP_STEPS.md)
+- [x] Create 6 Fabric workspaces
+- [x] Assign workspaces to capacity
+- [x] Verify all services operational
 
-### Day 5: Data Exploration
+### Day 5: Data Exploration 🔜 NEXT
 - [ ] Browse [Alberta Open Data Portal](https://open.alberta.ca/)
 - [ ] Identify 3-5 datasets to use:
   - Healthcare (e.g., Emergency Department wait times)
   - Environmental (e.g., Air quality monitoring)
+  - Justice/Courts data
   - At least one other domain
 - [ ] Document datasets in `data/sources/README.md`
+- [ ] Create Lakehouses in each Fabric workspace
 - [ ] Test API access (get sample data)
 
 ### Week 2: Learning & Planning

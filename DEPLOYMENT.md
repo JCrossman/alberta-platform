@@ -10,8 +10,16 @@ This project uses Azure Bicep for reproducible infrastructure deployments.
 - Azure subscription with appropriate permissions
 - Bicep CLI (included with Azure CLI)
 
-## Quick Deploy
+## Quick Deploy ✅ COMPLETED
 
+**Status**: All infrastructure already deployed and verified (Jan 28, 2026)
+
+**Subscription**: ME-MngEnvMCAP516709-jcrossman-1  
+**Subscription ID**: dabe0b83-abdb-448f-9ab0-31dfb2ab6b4b
+
+All resources are running. No deployment needed at this time.
+
+For future deployments or updates:
 ```bash
 # Navigate to infrastructure directory
 cd infrastructure/bicep

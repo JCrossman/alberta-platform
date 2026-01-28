@@ -5,6 +5,54 @@ All notable changes to the Alberta Open Data Intelligence Platform will be docum
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-01-28
+
+### Added - Phase 0 Complete! ✅
+- **Fabric Workspaces Created**: 6 workspaces via REST API
+  - alberta-healthcare (e18c4eb6-b6b2-4778-98cf-d8af3ad13215)
+  - alberta-justice (c780cc3b-fe24-4678-a6f2-250afd91de9e)
+  - alberta-energy (053e2131-7ddc-4b57-89c2-5b0f2a3ec869)
+  - alberta-agriculture (1d746c8d-d173-4680-9ef3-d382a2136b61)
+  - alberta-pensions (86dd4de7-85ec-49ab-ad72-ec1bc76ecb55)
+  - alberta-coordination (1013f015-ee04-473d-a868-4dc682f322fe)
+- Created `create-workspaces.sh` - Automated workspace creation via Fabric API
+- Created `docs/fabric-workspace-setup.md` - Portal instructions for capacity assignment
+
+### Verified - All Infrastructure Operational
+- ✅ Azure OpenAI (GPT-4o + text-embedding-3-small) - Running
+- ✅ Azure AI Search - Running
+- ✅ Azure Functions - Running
+- ✅ Static Web App - Deployed
+- ✅ Key Vault with RBAC - Running
+- ✅ Storage Accounts (2) - Running
+- ✅ Log Analytics & App Insights - Running
+- ✅ Microsoft Fabric F2 capacity - Active
+- ✅ 6 Fabric Workspaces - Created and assigned
+
+### Changed
+- **Subscription Consolidation**: Switched to Subscription #1 (dabe0b83-abdb-448f-9ab0-31dfb2ab6b4b)
+  - All resources (Fabric + core services) now in one subscription
+  - Eliminates cross-subscription confusion
+- Updated `PROJECT_STATUS.md` to v1.1.0 - Reflects Phase 0 completion
+- Updated `docs/implementation-plan.md` - Phase 0 marked COMPLETE
+- Updated `README.md` - Current status and verified resources
+- Updated `GETTING_STARTED.md` - Reflects completed first week
+- Updated `DEPLOYMENT.md` - Notes existing deployment
+- Updated `MANUAL_SETUP_STEPS.md` - Shows workspace creation complete
+- Updated `PROJECT_SUMMARY.md` - Next steps for Phase 1
+
+### Discovered
+- All Azure infrastructure was previously deployed (found during naming conflict investigation)
+- Resources existed in Subscription #1, not default Subscription #2
+- No actual deployment failures - just needed to locate existing resources
+
+### Ready for Phase 1
+- All infrastructure provisioned and verified
+- Fabric workspaces ready for Lakehouse creation
+- OpenAI models deployed and accessible
+- Storage accounts ready for data ingestion
+- Next: Create Lakehouses and start building data pipelines
+
 ## [1.0.1] - 2026-01-20 (Evening)
 
 ### Added - Fabric Cost Management
